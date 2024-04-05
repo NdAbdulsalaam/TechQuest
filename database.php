@@ -11,4 +11,3 @@
     }else{
         echo "Unable to connect to database";
     }
-
