@@ -16,13 +16,13 @@
     <?php
         $userid = $_SESSION['id'];
         $get_info = mysqli_query($connectdb, "SELECT * FROM `registration` WHERE id='$userid'");
-        $fetch = mysqli_fetch_array($get_info);
+        $current_user = mysqli_fetch_array($get_info);
     ?>
     <div class="container card p-5 bg-light my-5">
         <b class="text-danger">Welcome</b>
         <h2>
             <?php
-                echo $fetch['fname'];
+                echo $current_user['fname'] //.$current_user['lname'];
             ?>
         </h2>
     </div>
