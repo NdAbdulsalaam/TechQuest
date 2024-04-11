@@ -41,17 +41,17 @@
         }
     }
 
-//     if(isset($_POST['update'])){
-//         $fname = $_POST['fname'];
-//         $email = $_POST['email'];
+    if(isset($_POST['update'])){
+        $fname = $_POST['fname'];
+        $email = $_POST['email'];
 
-//         $update_info = mysqli_query($connectdb, "UPDATE `registration` SET `name`='$fname',`email`='$email' WHERE id='2'");
+        $update_info = mysqli_query($connectdb, "UPDATE `registration` SET `name`='$fname',`email`='$email' WHERE id='2'");
 
-//         if($update_info == true){
-//             echo "<script>window.alert('User Info Successfully Updated!')</script>";
-//             header("refresh:0 url=preview.php");
-//         }else{
-//             echo "<script>window.alert('Something went wrong, pls try again!')</script>";
-//             header("location: update.php");
-//         }
-//     }
+        if($update_info == true){
+            echo "<script>window.alert('User Info Successfully Updated!')</script>";
+            header("refresh:0 url=preview.php");
+        }else{
+            echo "<script>window.alert('Something went wrong, pls try again!')</script>";
+            header("location: update.php");
+        }
+    }

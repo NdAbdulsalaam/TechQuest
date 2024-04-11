@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashboard">Dashboard</a>
+          <a class="nav-link active" aria-current="page" href="dashboard.php">Dashboard</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="register.php">Register</a>
@@ -16,7 +16,7 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
+          <a class="nav-link" href="preview.php">Preview</a>
         </li>
       </ul>
     </div>
