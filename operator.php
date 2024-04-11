@@ -16,7 +16,7 @@
         if($insert_into_db == true){
             echo "<script>window.alert('Successfully Registered!')</script>";
             header("refresh:0 url=registration.php");
-            // header("location: registration.php");
+            // header("location: register.php");
         }else{
             echo "<script>window.alert('Something went wrong, pls try again!')</script>";
             header("location: registration.php");
@@ -37,4 +37,3 @@
 //             header("location: update.php");
 //         }
 //     }
-// ?>
