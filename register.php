@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Last Name</label>
-                <input type="text" class="form-control" name="fname">
+                <input type="text" class="form-control" name="lname">
             </div>
             <div class="mb-3">
                 <label class="form-label">Email Address</label>
@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Phone Number</label>
-                <input type="text" class="form-control" name="fname">
+                <input type="text" class="form-control" name="phoneNo">
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
