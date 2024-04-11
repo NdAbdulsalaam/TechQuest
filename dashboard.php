@@ -14,6 +14,7 @@
 </head>
 <body>
     <?php
+        include("include/navbar.php");
         $userid = $_SESSION['id'];
         $get_info = mysqli_query($connectdb, "SELECT * FROM `registration` WHERE id='$userid'");
         $current_user = mysqli_fetch_array($get_info);

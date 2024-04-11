@@ -23,6 +23,24 @@
         }
     }
 
+    if(isset($_POST['login'])){
+        session_start();
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $hash_password = md5($password);
+
+        $check_user = mysqli_query($connectdb, "SELECT * FROM `registration` WHERE email='$email' and password='$hash_password'");
+        $fetch_info = mysqli_fetch_array($check_user);
+
+        if($fetch_info > 0){
+            $_SESSION['id'] = $fetch_info['id'];
+            $_SESSION['email'] = $fetch_info['email'];
+            header('location: dashboard.php');
+        }else{
+            echo("<script>window.alert('Login details not valid')</script>");
+        }
+    }
+
 //     if(isset($_POST['update'])){
 //         $fname = $_POST['fname'];
 //         $email = $_POST['email'];
