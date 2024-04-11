@@ -30,7 +30,7 @@
 
 
     <div class="text-center my-5">
-        <!-- <a href="logout.php" class="btn btn-danger w-50">Logout</a> -->
+        <a href="logout.php" class="btn btn-danger w-50">Logout</a>
     </div>
 </body>
 </html>
