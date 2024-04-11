@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include('connectdb.php');
 
     if(isset($_POST['register'])){
@@ -15,16 +16,14 @@
 
         if($insert_into_db == true){
             echo "<script>window.alert('Successfully Registered!')</script>";
-            header("refresh:0 url=registration.php");
-            // header("location: register.php");
+            header("refresh:0 url=register.php");
         }else{
             echo "<script>window.alert('Something went wrong, pls try again!')</script>";
-            header("location: registration.php");
+            header("location: register.php");
         }
     }
 
     if(isset($_POST['login'])){
-        session_start();
         $email = $_POST['email'];
         $password = $_POST['password'];
         $hash_password = md5($password);
@@ -42,10 +41,13 @@
     }
 
     if(isset($_POST['update'])){
+        $user_id = $_SESSION['id'];
         $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
         $email = $_POST['email'];
+        $phoneNo = $_POST['phoneNo'];
 
-        $update_info = mysqli_query($connectdb, "UPDATE `registration` SET `name`='$fname',`email`='$email' WHERE id='2'");
+        $update_info = mysqli_query($connectdb, "UPDATE `registration` SET `fname`='$fname', `lname`='$lname', `email`='$email', `phoneNo`='$phoneNo' WHERE id='$user_id'");
 
         if($update_info == true){
             echo "<script>window.alert('User Info Successfully Updated!')</script>";

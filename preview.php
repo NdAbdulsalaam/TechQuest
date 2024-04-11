@@ -5,21 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Preview Data</title>
+    <title>User Info</title>
 </head>
 <body>
     <?php
         $get_info = mysqli_query($connectdb, "SELECT * FROM `registration` WHERE 1");
-        while($fetch = mysqli_fetch_array($get_info)){
+        while($current_user = mysqli_fetch_array($get_info)){
     ?>
     <div>
-        <h1><?php echo $fetch['id'] ?></h1>
-        <p><?php echo $fetch['name'] ?></p>
-        <p><?php echo $fetch['email'] ?></p>
+        <h2><?php echo $current_user['fname'] ." " .$current_user['lname'] ?></h2>
+        <p><?php echo $current_user['email'] ?></p>
+        <p><?php echo $current_user['phoneNo'] ?></p>
     </div>
     <hr>
     <?php } ?>
 
-    <a href="update.php">Update User Informations</a>
+    <a href="update.php">Update User</a>
 </body>
 </html>
