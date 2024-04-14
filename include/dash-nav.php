@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="#">
+                <a href="delete-profile.php">
                     <i class="fa fa-trash display-3"></i>
                 </a>
             </div>

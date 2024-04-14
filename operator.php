@@ -37,6 +37,7 @@
             header('location: dashboard.php');
         }else{
             echo("<script>window.alert('Login details not valid')</script>");
+            header("refresh:0 url=login.php");
         }
     }
 
