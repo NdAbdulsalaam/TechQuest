@@ -6,8 +6,6 @@
 
     $connectdb = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-    if($connectdb == true){
-        echo "Database connected";
-    }else{
+    if($connectdb != true){
         echo "Unable to connect to database";
     }

@@ -23,9 +23,14 @@
         <b class="text-danger">Welcome</b>
         <h2>
             <?php
-                echo $current_user['fname'] //.$current_user['lname'];
+                echo $current_user['fname'] ." " .$current_user['lname'];
             ?>
         </h2>
+    </div>
+
+    
+    <div>
+        <?php include("include/dash-nav.php") ?>
     </div>
 
 
