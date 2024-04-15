@@ -4,8 +4,8 @@
 
     <?php require_once('include/navbar.php') ?>
 
-<div>
-<form class="w-50 mb-3 mt-auto ms-auto me-auto">
+<div class="w-50 mb-3 mt-auto ms-auto me-auto">
+<form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -18,6 +18,6 @@
 </form>
 
     <div>
-    <p>Don't have an account, <a href="register.php">Register<a></p>
+    <p>Don't have an account? <a href="register.php">Register<a></p>
     </div>
 </div>
