@@ -1,10 +1,10 @@
 <?php 
-    define("DATA_SERVER", "localhost");
-    define("DATA_USER", "root");
-    define("DATA_PASS", "");
-    define("DATA_NAME", "tqclassdb");
+    define("DB_SERVER", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASS", "");
+    define("DB_NAME", "tqclassdb");
 
-    $connectdb = mysqli_connect(DATA_SERVER, DATA_USER, DATA_PASS, DATA_NAME);
+    $connectdb = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
     if($connectdb != true) {
         echo "Ops! Something went wrong";

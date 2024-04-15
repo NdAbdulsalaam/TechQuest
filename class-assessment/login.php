@@ -2,10 +2,15 @@
 <?php require_once('layout.php') ?>
 </head>
 
-    <?php require_once('include/navbar.php') ?>
+<?php require_once('include/navbar.php') ?>
+
+<?php 
+
+?>
+
 
 <div class="w-50 mb-3 mt-auto ms-auto me-auto">
-<form>
+<form method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
