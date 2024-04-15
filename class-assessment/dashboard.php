@@ -1,0 +1,1 @@
+echo "You're now on the dashboard"
