@@ -16,7 +16,7 @@
 
         if($insert_into_db == true){
             echo "<script>window.alert('Successfully Registered!')</script>";
-            header("refresh:0 url=register.php");
+            header("refresh:0 url=login.php");
         }else{
             echo "<script>window.alert('Something went wrong, pls try again!')</script>";
             header("location: register.php");

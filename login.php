@@ -16,6 +16,7 @@
                 <input type="password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-primary" name="login">Login</button>
+            <p>I don't have an account, <a href="register.php">Resgister?</a>
         </form>
     </div>
 </body>

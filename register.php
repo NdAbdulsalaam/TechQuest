@@ -32,6 +32,7 @@
                 <input type="password" class="form-control" name="password">
             </div>
             <button class="btn btn-primary" name="register">Register</button>
+            <p>Already have an account, <a href="login.php">Login?</a>
         </form>
     </div>
 </body>
