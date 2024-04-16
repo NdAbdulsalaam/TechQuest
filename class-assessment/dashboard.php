@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('connectdb.php');
+    include('include/config.php');
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
 
     
     <div>
-        <?php include("include/dash-nav.php") ?>
+        <?php include("include/dash-navbar.php") ?>
     </div>
 
 
