@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-3">
-                <a href="view-profile.php">
+                <a href="user-profile.php">
                     <i class="fa fa-eye display-3"></i>
                 </a>
             </div>
