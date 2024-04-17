@@ -1,6 +1,13 @@
 <?php
     session_start();
     include('include/config.php');
+
+
+    if(!isset($_SESSION['id']) ||  $_SESSION['id'] < 1){
+        header("location: login.php");
+        exit();
+    }
+
 ?>
 
 <!DOCTYPE html>
