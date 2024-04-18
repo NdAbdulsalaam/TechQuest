@@ -5,6 +5,8 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 
 if(isset($_POST['sendmail'])){
@@ -13,10 +15,8 @@ if(isset($_POST['sendmail'])){
     $body = $_POST['body'];
     $email = $_POST['email'];
 
-    // $my_mail = $_ENV['MAIL_USER'];
-    // $my_pass = $_ENV['MAIL_PASS'];
-
-
+    $my_mail = $_ENV['MAIL_USER'];
+    $my_pass = $_ENV['MAIL_PASS'];
 
     $mail = new PHPMailer(true);
 
@@ -52,7 +52,7 @@ if(isset($_POST['sendmail'])){
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();
-        echo "<script>window.alert('Mail has been sent successfully!'</script>";
+        echo "<script>window.alert('Mail has been sent successfully!')</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
