@@ -16,7 +16,7 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="preview.php">Preview</a>
+          <a class="nav-link" href="contact.php">Contact</a>
         </li>
       </ul>
     </div>
