@@ -34,8 +34,8 @@ if(isset($_POST['sendmail'])){
 
 
         //Recipients
-        $mail->setFrom("$my_mail", 'Nurudeen Mailer');
-        $mail->addAddress("$my_mail", 'Nurdudeen User');     //Add a recipient
+        $mail->setFrom("$my_mail", 'Nurudeen Abdulsalaam');
+        $mail->addAddress("$email", "$name");     //Add a recipient
         //    $mail->addAddress('ellen@example.com');               //Name is optional
         $mail->addReplyTo("$email");
         // $mail->addCC('cc@example.com');
