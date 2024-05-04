@@ -9,9 +9,15 @@ Route::get('/', function () {
 Route::get('/pizzas', function() {
     $pizzas = [
                 [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
-                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
-                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
-                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Nurudeen', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Faaizah', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Roodiyah', 'gender' => 'male', 'age' => 45 ],
     ];
-    return view('pizzas', ['pizzas' => $pizzas]);
+
+    $type = request('type');
+
+    return view('pizzas', [
+        'pizzas' => $pizzas,
+        'gender' => $type
+    ]);
 });
