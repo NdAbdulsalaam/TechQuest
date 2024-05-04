@@ -10,9 +10,4 @@ Route::get('/', function() {
 
 Route::get('/pizzas', [PizzaController::class, 'index']);
 
-
-// Route::get('/pizzas', function() {
-//     return "Nothing";
-// });
-
 Route::get('/pizzas/{id}', 'PizzaController@show');
