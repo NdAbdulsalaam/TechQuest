@@ -21,3 +21,7 @@ Route::get('/pizzas', function() {
         'gender' => $type
     ]);
 });
+
+Route::get('/pizzas/{id}', function($id) {
+    return view('details', ['id' => $id]);
+});
