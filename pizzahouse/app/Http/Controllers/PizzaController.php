@@ -13,7 +13,7 @@ class PizzaController extends Controller
         //     ['name' => 'Roodiyah', 'gender' => 'female', 'age' => 70]
         // ];
 
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::where('base', 'flower')->get();
 
         return view('pizzas', [
             'pizzas' => $pizzas,
