@@ -15,9 +15,13 @@ class PizzaController extends Controller
 
         $pizzas = Pizza::where('base', 'flower')->get();
 
-        return view('pizzas', [
+        return view('pizza.index', [
             'pizzas' => $pizzas,
             // 'gender' => $pizzas[1]['gender']
         ]);
+    }
+
+    public function show($id) {
+        return view('pizza.show', ['id' => $id]);
     }
 }
