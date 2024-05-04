@@ -7,10 +7,11 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', function() {
-    $pizza = [
-        'name' => 'Abdulsalaam',
-        'gender' => 'male',
-        'age' => 45
+    $pizzas = [
+                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
+                [ 'name' => 'Abdulsalaam', 'gender' => 'male', 'age' => 45 ],
     ];
-    return view('pizzas', $pizza);
+    return view('pizzas', ['pizzas' => $pizzas]);
 });
