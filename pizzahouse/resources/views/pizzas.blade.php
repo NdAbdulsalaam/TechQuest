@@ -15,10 +15,10 @@
         {{-- @for ($i = 0; $i < count($pizzas); $i++)
             <p>{{ $pizzas[$i]['name'] }}
         @endfor --}}
-        {{ $gender }}
+
 
         @foreach ($pizzas as $pizza)
-            <div> {{ $pizza['name'] }} </div>
+            <div> {{ $pizza->name }} - {{ $pizza->type }} - {{ $pizza->base }} </div>
         @endforeach
     </div>
 @endsection
