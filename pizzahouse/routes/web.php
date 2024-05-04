@@ -7,6 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', function() {
-    // return view('pizzas');
-    return ['name' => 'Abdulsalaam', 'gender' => 'male'];
+    return view('pizzas', ['name' => 'Abdulsalaam', 'gender' => 'male']);
 });
