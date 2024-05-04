@@ -7,5 +7,10 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', function() {
-    return view('pizzas', ['name' => 'Abdulsalaam', 'gender' => 'male']);
+    $pizza = [
+        'name' => 'Abdulsalaam',
+        'gender' => 'male',
+        'age' => 45
+    ];
+    return view('pizzas', $pizza);
 });

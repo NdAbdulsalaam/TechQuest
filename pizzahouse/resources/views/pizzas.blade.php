@@ -20,7 +20,10 @@
                     Pizza list
                 </div>
             </div>
-            <p>{{ $name }}</p>
+            <p>{{ $name }} is a {{ $gender }} and he's {{ $age }} years old </p>
+            @if( $age > 18)
+                <p> {{ $name }} is an adult </p>
+            @endif
         </div>
     </body>
 </html>
