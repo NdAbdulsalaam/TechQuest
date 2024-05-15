@@ -8,6 +8,7 @@ use App\Http\Controllers\Seller\DashboardController as SellerDashboardController
 
 use App\Http\Middleware\Role; // Import the Role middleware
 
+
 Route::get('/', function () {
     return view('welcome');
 });
