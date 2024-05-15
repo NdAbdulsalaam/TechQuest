@@ -1,27 +1,26 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Seller\DashboardController as SellerDashboardController;
+
+use App\Http\Middleware\Role; // Import the Role middleware
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Auth::routes();
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/pizzas', [PizzaController::class, 'index'])->middleware('auth');
+Route::get('/pizzas/create', [PizzaController::class, 'create']);
+Route::post('/pizzas', [PizzaController::class, 'store']);
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->middleware('auth');
 
-require __DIR__.'/auth.php';
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(Role::class . ':admin'); // Apply Role middleware
+Route::get('/view-profile', [AdminDashboardController::class, 'users'])->middleware(Role::class . ':admin'); // Apply Role middleware
+Route::get('/seller-dashboard', [SellerDashboardController::class, 'index'])->middleware(Role::class . ':seller'); // Apply Role middleware
