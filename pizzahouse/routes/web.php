@@ -22,4 +22,5 @@ Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->middleware('auth')
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->middleware(Role::class . ':admin'); // Apply Role middleware
+Route::get('/view-profile', [AdminDashboardController::class, 'users'])->middleware(Role::class . ':admin'); // Apply Role middleware
 Route::get('/seller-dashboard', [SellerDashboardController::class, 'index'])->middleware(Role::class . ':seller'); // Apply Role middleware
