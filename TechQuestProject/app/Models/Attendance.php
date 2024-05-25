@@ -10,14 +10,15 @@ class Attendance extends Model
     use HasFactory;
 
     protected $fillable = [
-        'staff_id',
+        'user_id',
         'date',
         'check_in_time',
         'check_out_time',
     ];
 
-    public function staff()
+    public function user()
     {
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(User::class);
     }
 }
+
