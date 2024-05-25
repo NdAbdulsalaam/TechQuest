@@ -1,4 +1,4 @@
-@extends('layouts.seller-master')
+@extends('layouts.admin-master')
 @section('title', 'Add User Information')
 
 
@@ -13,7 +13,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h2 class="m-0 font-weight-bold text-danger d-inline float-left"><b> {{ _('Nuyola Market') }}</h2>
-            <h6 class="d-inline float-right text-danger"><b><a href="{{ route('seller.users') }}">{{ __('<-- Back') }}</a></b></h6>
+            <h6 class="d-inline float-right text-danger"><b><a href="{{ route('admin.users') }}">{{ __('<-- Back') }}</a></b></h6>
         </div>
         <div class="card-body">
             <div class="mx-auto" style="max-width: 400px;"> <!-- Centering content within a max-width container -->
@@ -31,7 +31,7 @@
                     </ul>
                 @endif
 
-                <form action="{{ route('seller.add-user') }}" method="post">
+                <form action="{{ route('admin.add-user') }}" method="post">
                     @csrf
                     @method('POST')
 
@@ -59,7 +59,6 @@
                         <select name="role" id="role" class="form-control">
                             <option value="" disabled selected>Select Role</option>
                             <option value="admin">Admin</option>
-                            <option value="seller">Seller</option>
                             <option value="user">User</option>
                         </select>
                     </div>

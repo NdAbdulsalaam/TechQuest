@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Seller;
-
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -12,10 +11,8 @@ class DashboardController extends Controller
         return view('admin.dashboard');
       }
 
-      public function sellers(){
-        $sellers = Seller::all();
-        return view('admin.staffs', compact('sellers'));
+      public function users(){
+        $users = User::all();
+        return view('admin.users', compact('users'));
       }
 }
-
-

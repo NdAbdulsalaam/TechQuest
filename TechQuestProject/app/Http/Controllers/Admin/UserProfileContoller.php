@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Seller;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
@@ -12,12 +12,12 @@ class UserProfileContoller extends Controller
 {
     public function view($id){
         $user = User::find($id);
-        return view('seller.view-user', compact('user'));
+        return view('admin.view-user', compact('user'));
       }
 
       
     public function create(){
-      return view('seller.add-user');
+      return view('admin.add-user');
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class UserProfileContoller extends Controller
 
       public function edit($id){
         $user = User::find($id);
-        return view('seller.update-user', compact('user'));
+        return view('admin.update-user', compact('user'));
       }
 
       public function update($id, Request $request){

@@ -1,5 +1,5 @@
 
-@extends('layouts.seller-master')
+@extends('layouts.admin-master')
 @section('title', 'Users Information')
 
 
@@ -14,7 +14,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-danger d-inline float-left"><b>{{ __('Nuyola Market') }}</b></h6>
-        <a href="{{ route('seller.add-user') }}"><button class="btn btn-danger float-right"><i class="fa fa-plus mr-2"></i>{{ __('Add User') }}</button></a>
+        <a href="{{ route('admin.add-user') }}"><button class="btn btn-danger float-right"><i class="fa fa-plus mr-2"></i>{{ __('Add User') }}</button></a>
     </div>
 
     @if (session()->has('success'))
@@ -63,8 +63,8 @@
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->updated_at }}</td>
                         <td>
-                            <a href="{{ route('seller.view-user', $user->id ) }}" class="fa fa-eye text-danger mr-3"></a>
-                            <form action="{{ route('seller.delete-user', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');" style="display: inline;">
+                            <a href="{{ route('admin.view-user', $user->id ) }}" class="fa fa-eye text-danger mr-3"></a>
+                            <form action="{{ route('admin.delete-user', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" style="border: none; background: none; color: inherit; cursor: pointer; padding: 0;">

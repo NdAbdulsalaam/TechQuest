@@ -1,4 +1,4 @@
-@extends('layouts.seller-master')
+@extends('layouts.Admin-master')
 @section('title', 'Edit User Information')
 
 
@@ -13,7 +13,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h2 class="m-0 font-weight-bold text-danger d-inline float-left"><b> {{ $user->name }}</h3>
-            <h6 class="d-inline float-right text-danger"><b><a href="{{ route('seller.users') }}">{{ __('<-- Back') }}</a></b></h6>
+            <h6 class="d-inline float-right text-danger"><b><a href="{{ route('admin.users') }}">{{ __('<-- Back') }}</a></b></h6>
         </div>
         <div class="card-body">
             <div class="mx-auto" style="max-width: 400px;"> <!-- Centering content within a max-width container -->
@@ -31,7 +31,7 @@
                     </ul>
                 @endif
 
-                <form action="{{ route('seller.update-user', $user->id) }}" method="post">
+                <form action="{{ route('admin.update-user', $user->id) }}" method="post">
                     @csrf
                     @method('PUT')
 
@@ -53,7 +53,7 @@
                         <select name="role" id="role" class="form-control">
                             <option value="" disabled selected>Select Role</option>
                             <option value="admin">Admin</option>
-                            <option value="seller">Seller</option>
+                            <option value="admin">admin</option>
                             <option value="user">User</option>
                         </select>
                     </div>

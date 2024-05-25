@@ -14,8 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         // Create one account each with an admin, seller & user role
         $this->call(UsersTableSeeder::class);
-        $this->call(SellersTableSeeder::class);
-        $this->call(StaffsTableSeeder::class);
         $this->call(AttendanceTableSeeder::class);
 
     }

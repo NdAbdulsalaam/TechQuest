@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -40,28 +42,37 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->truncate(); //for cleaning earlier data to avoid duplicate entries
         DB::table('users')->insert([
-          'name' => 'Nuyola Admin',
-          'username' => 'nuyolaadmin',
-          'role' => 'admin',
-          'email' => 'nuyolaadmin@gmail.com',
-          'password' => Hash::make('admin'),
+            'fname' => 'TechQuest',
+            'lname' => 'Academy',
+            'username' => "tqadmin",
+            'email' => 'tqacademy@admin.com',
+            'phone' => '1234567890',
+            'position' => 'Manager',
+            'office' => 'ajah',
+            'age' => 45,
+            'salary' => 60000.00,
+            'role' => 'admin',
+            'password' => Hash::make('admin'),
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+
         ]);
 
         DB::table('users')->insert([
-          'name' => 'Nuyola Seller',
-          'username' => 'nuyolaseller',
-          'role' => 'seller',
-          'email' => 'nuyolaseller@gmail.com',
-          'password' => Hash::make('seller'),
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Nuyola User',
-            'username' => 'nuyolauser',
+            'fname' => 'TechQuest',
+            'lname' => 'Staff',
+            'username' => "tqstaff",
+            'email' => 'tqacademy@staff.com',
+            'phone' => '1234567890',
+            'position' => 'Tutor',
+            'office' => 'ajah',
+            'age' => 36,
+            'salary' => 40000.00,
             'role' => 'user',
-            'email' => 'nuyolauser@gmail.com',
             'password' => Hash::make('user'),
-          ]);
+            'created_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(), 
+        ]);
       }
     }
 
