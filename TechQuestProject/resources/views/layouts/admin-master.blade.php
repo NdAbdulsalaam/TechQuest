@@ -71,9 +71,11 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Quick Actions</h6>
-                        {{-- <a class="collapse-item" href="{{ route(attendance.signedIn) }}">Signed In Staffs</a> --}}
-                        {{-- <a class="collapse-item" href="{{ route(attendance.signedOut) }}">Signed Out Staffs</a> --}}
+                        <h6 class="collapse-header">Actions</h6>
+                        <a class="collapse-item" href="{{ route('admin.signed_in_out') }}">All Attendance</a>
+                        <a class="collapse-item" href="{{ route('admin.signed_in') }}">Signed In Staffs</a>
+                        <a class="collapse-item" href="{{ route('admin.signed_out') }}">Signed Out Staffs</a>
+                       
                     </div>
                 </div>
             </li>
