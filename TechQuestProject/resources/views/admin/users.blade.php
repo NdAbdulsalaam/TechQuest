@@ -6,12 +6,11 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">{{ __('Staffs information') }}</h1>
-<p class="mb-4"><b><i>{{ __('Staffs Personal') }}</i></b></p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-danger d-inline float-left"><b>{{ __('Nuyola Market') }}</b></h6>
+        <h6 class="m-0 font-weight-bold text-danger d-inline float-left"><b>{{ __('TechQuest Academy') }}</b></h6>
         <a href="{{ route('admin.add-user') }}"><button class="btn btn-danger float-right"><i class="fa fa-plus mr-2"></i>{{ __('Add Staff') }}</button></a>
     </div>
 

@@ -1,12 +1,11 @@
 @extends('layouts.Admin-master')
-@section('title', 'Edit Staff Information')
+@section('title', 'Edit Profile')
 
 @section('content')
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-center text-gray-800">{{ __('Edit Staff') }}</h1>
-    <p class="mb-4 text-center"><b><i>{{ __('Staff Personal') }}</i></b></p>
+    <h1 class="h3 mb-2 text-center text-gray-800">{{ __('Edit Profile') }}</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
