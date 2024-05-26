@@ -98,7 +98,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User Mails</h6>
-                        <a class="collapse-item" href="#">All Mails</a>
+                        <a class="collapse-item" href="{{ route('admin.send-email') }}">All Mails</a>
                         <a class="collapse-item" href="#">Admin Mails</a>
                         <a class="collapse-item" href="#">Staffs Mails</a>
                     </div>

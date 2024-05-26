@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserProfileContoller;
+use App\Http\Controllers\Admin\PHPMailerController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,9 @@ Route::middleware(['auth', 'verified', RoleMiddleware::class . ':admin'])->prefi
     Route::get('signed-out', [DashboardController::class, 'signedOutStaff'])
                 ->name('admin.signed_out');
 
+    Route::get('send-email',[PHPMailerController::class, 'create'])
+                ->name('admin.send-email');
+                
+    Route::post('send-email',[PHPMailerController::class, 'store'])
+                ->name('admin.post-email');
 });
