@@ -97,19 +97,18 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">User Mails</h6>
-                        <a class="collapse-item" href="{{ route('admin.send-email') }}">All Mails</a>
-                        <a class="collapse-item" href="#">Admin Mails</a>
-                        <a class="collapse-item" href="#">Staffs Mails</a>
+                        <h6 class="collapse-header">Actions</h6>
+                        <a class="collapse-item" href="{{ route('admin.send-email') }}">Send Email</a>
+                        <a class="collapse-item" href="#">Others</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                {{-- <a class="nav-link" href="{{ route('admin.send-email') }}"> --}}
+                <a class="nav-link" href="{{ route('admin.send-email') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Send Mail</span></a>
+                    <span>Send Email</span></a>
             </li>
 
 

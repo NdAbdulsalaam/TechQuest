@@ -36,16 +36,16 @@
                     <div class="row">
                         <div class="col-12 form-group">
                             <label for="email">{{ __('Recipient Email:') }}</label>
-                            <input type="email" name="email" placeholder="insert email address" class="form-control" id="email" value="">
+                            <input type="email" name="email" placeholder="Insert email address" class="form-control" id="email" value="">
                         </div>
                         <div class="col-12 form-group">
                             <label for="lname">{{ __('Subject') }}</label>
-                            <input type="text" name="subject" placeholder="insert mail subjet" class="form-control" id="subject" value="">
+                            <input type="text" name="subject" placeholder="Insert mail subjet" class="form-control" id="subject" value="">
                         </div>
 
                         <div class="col-12 form-group">
                             <label for="office">{{ __('Message') }}</label>
-                            <textarea class="form-control" placeholder="type your message here..." rows="6" name="body" id="body"></textarea>
+                            <textarea class="form-control" placeholder="Type your message here..." rows="6" name="body" id="body"></textarea>
                         </div>
 
 
