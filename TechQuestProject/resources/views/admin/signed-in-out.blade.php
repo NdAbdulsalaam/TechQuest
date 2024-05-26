@@ -20,12 +20,12 @@
                                 <tr>
                                     <th>{{ __('First Name') }}</th>
                                     <th>{{ __('Last Name') }}</th>
-                                    {{-- <th>{{ __('Username') }}</th>
-                                    <th>{{ __('Email') }}</th>
+                                    {{-- <th>{{ __('Username') }}</th> --}}
+                                    {{-- <th>{{ __('Email') }}</th> --}}
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Role') }}</th>
-                                    <th>{{ __('Location') }}</th> --}}
-                                    <th>{{ __('Check-In') }}</th>
+                                    {{-- <th>{{ __('Location') }}</th> --}}
+                                    <th>{{ __('In') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,11 +33,11 @@
                                     <tr>
                                         <td>{{ $user->fname }}</td>
                                         <td>{{ $user->lname }}</td>
-                                        {{-- <td>{{ $user->username }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        {{-- <td>{{ $user->username }}</td> --}}
+                                        {{-- <td>{{ $user->email }}</td> --}}
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->role }}</td>
-                                        <td>{{ $user->location }}</td> --}}
+                                        {{-- <td>{{ $user->location }}</td> --}}
                                         <td>
                                             @foreach($user->attendances as $attendance)
                                                 {{ $attendance->check_in_time }}<br>
@@ -65,13 +65,13 @@
                                 <tr>
                                     <th>{{ __('First Name') }}</th>
                                     <th>{{ __('Last Name') }}</th>
-                                    {{-- <th>{{ __('Username') }}</th>
-                                    <th>{{ __('Email') }}</th>
+                                    {{-- <th>{{ __('Username') }}</th> --}}
+                                    {{-- <th>{{ __('Email') }}</th> --}}
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Role') }}</th>
-                                    <th>{{ __('Location') }}</th> --}}
-                                    <th>{{ __('Check-In') }}</th>
-                                    <th>{{ __('Check-Out') }}</th>
+                                    {{-- <th>{{ __('Location') }}</th> --}}
+                                    <th>{{ __('In') }}</th>
+                                    <th>{{ __('Out') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,11 +79,11 @@
                                     <tr>
                                         <td>{{ $user->fname }}</td>
                                         <td>{{ $user->lname }}</td>
-                                        {{-- <td>{{ $user->username }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        {{-- <td>{{ $user->username }}</td> --}}
+                                        {{-- <td>{{ $user->email }}</td> --}}
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->role }}</td>
-                                        <td>{{ $user->location }}</td> --}}
+                                        {{-- <td>{{ $user->location }}</td> --}}
                                         <td>
                                             @foreach($user->attendances as $attendance)
                                                 {{ $attendance->check_in_time }}<br>

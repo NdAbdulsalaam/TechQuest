@@ -1,6 +1,29 @@
-@extends('/layouts.admin-master')
+@extends('layouts.admin-master')
 @section('title', 'Admin Dashboard')
 
+@section('php')
+    @php
+        use Illuminate\Support\Facades\DB;
+
+
+            $staffs = DB::table('users')->count();
+            $admin_staffs = DB::table('users')->where('role','admin')->count();
+            $user_staffs = DB::table('users')->where('role','user')->count();
+
+            // echo $staffs;
+
+
+        $dataPoints = array(
+            array("label"=>"All Staffs", "y"=>$staffs),
+            // array("label"=>"Admin Staffs", "y"=>$admin_staffs),
+            array("label"=>"Staffs As User", "y"=>$user_staffs),
+            // array("label"=>"Admin Staffs", "y"=>$admin_staffs),
+            array("label"=>"Admin Staffs", "y"=>$admin_staffs),
+            array("label"=>"Empty", "y"=>1.0)
+        );
+
+    @endphp
+@endsection
 
 @section('content')
 <div id="content">
@@ -12,7 +35,12 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+        <h1 class="h3 mb-0 text-gray-800"><span class="text-danger"><b>{{ Auth::user()->name }}</b></span></h1>
+        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
@@ -27,11 +55,16 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                All Active Users</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php
+                                    $users = DB::table('users')->count();
+                                    echo $users;
+                                ?>
+                            </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -45,11 +78,16 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                Admin User(s)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php
+                                    $users = DB::table('users')->where('role','admin')->count();
+                                    echo $users;
+                                ?>
+                            </div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -109,12 +147,19 @@
     <div class="row">
 
         <!-- Area Chart -->
+        {{-- <script>
+            window.onload = function () {
+
+
+
+            }
+            </script> --}}
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                    <h5 class="m-0 font-weight-bold text-primary">Staffs Daily Attendance</h5>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,29 +168,109 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                             aria-labelledby="dropdownMenuLink">
                             <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">See All</a>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="{{ route('admin.users') }}">View Staffs</a>
                         </div>
                     </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
+                    <div class="panel-primary">
+                        <div class="">
+                    <h6 class="text-on-pannel text-primary"><b>{{ __('Signed-In Staffs') }}</b> <i class="fa fa-angles-left ml-3"></i></h6>
+                    <table class="table table-bordered" id="" width="" cellspacing="0">
+                        <thead class="text-center">
+                            <tr>
+                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Role') }}</th>
+                                <th>{{ __('Phone') }}</th>
+                                <th>{{ __('In') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            @foreach($sign_ins as $sign_in)
+                                <tr>
+                                    <td>{{ $sign_in->fname ." " .$sign_in->lname }}</td>
+                                    <td>{{ $sign_in->role }}</td>
+                                    <td>{{ $sign_in->phone }}</td>
+                                    <td>{{ $sign_in->check_out_time }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                </div>
+
+                <div class="card-body">
+                    <fieldset class="border p-2">
+                        <legend class="w-auto"><h6 class="text-primary"><b>{{ __('Signed-Out Staffs') }} <i class="fa fa-angles-right ml-3"></i></b></h6></legend>
+
+                    <table class="table table-bordered" id="" width="" cellspacing="0">
+                        <thead class="text-center">
+                            <tr>
+                                <th>{{ __('Name') }}</th>
+                                <th>{{ __('Role') }}</th>
+                                <th>{{ __('Phone') }}</th>
+                                <th>{{ __('Out') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            @foreach($sign_outs as $sign_out)
+                                <tr>
+                                    <td>{{ $sign_out->fname ." " .$sign_out->lname }}</td>
+                                    <td>{{ $sign_out->role }}</td>
+                                    <td>{{ $sign_out->phone }}</td>
+                                    <td>{{ $sign_out->check_out_time }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </fieldset>
                 </div>
             </div>
         </div>
 
         <!-- Pie Chart -->
+        <script>
+            const myDate = new Date();
+            let currentYear = myDate.getFullYear();
+            let currentMonthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            let currentMonthGet = myDate.getMonth();
+            let currentMonth = currentMonthArray[currentMonthGet];
+
+            window.onload = function() {
+
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: ""
+                },
+                subtitles: [{
+                    text: currentMonth + ' ' + currentYear
+                }],
+                data: [{
+                    type: "pie",
+                    yValueFormatString: "#,##0.00\"%\"",
+                    indexLabel: "{label} ({y})",
+                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
+
+            }
+
+            </script>
+
         <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                    <h5 class="m-0 font-weight-bold text-primary">Registered Staff Roles</h5>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -161,34 +286,23 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card Body -->
+
+
                 <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
-                        </span>
-                        <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
-                        </span>
-                    </div>
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Content Row -->
+
     <div class="row">
 
-        <!-- Content Column -->
+
         <div class="col-lg-6 mb-4">
 
-            <!-- Project Card Example -->
+
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -227,7 +341,7 @@
                 </div>
             </div>
 
-            <!-- Color System -->
+           
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="card bg-primary text-white shadow">
@@ -307,7 +421,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="{{ asset('dashboard/img/undraw_posting_photo.svg') }}"  alt="...">
+                            src="img/undraw_posting_photo.svg" alt="...">
                     </div>
                     <p>Add some quality, svg illustrations to your project courtesy of <a
                             target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
@@ -336,7 +450,6 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
 
 </div>
 

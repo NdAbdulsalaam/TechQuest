@@ -9,9 +9,9 @@ use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
-      public function index() {
-        return view('admin.dashboard');
-      }
+    //   public function index() {
+    //     return view('admin.dashboard');
+    //   }
 
       public function users(){
         $users = User::all();
@@ -68,29 +68,18 @@ class DashboardController extends Controller
 
     public function signedInOutStaff()
     {
-        // Get current date
-        $today = Carbon::today();
-
-        // Fetch signed-in staff (checked in but not checked out)
-        $signedInStaff = User::with(['attendances' => function ($query) {
-            $query->whereNotNull('check_in_time')
-                  ->whereNull('check_out_time');
-        }])->whereHas('attendances', function ($query) {
-            $query->whereNotNull('check_in_time')
-                  ->whereNull('check_out_time');
-        })->get();
-
-        // Fetch signed-out staff for the current day (checked in and checked out today)
-        $signedOutStaff = User::with(['attendances' => function ($query) use ($today) {
-            $query->whereNotNull('check_in_time')
-                  ->whereNotNull('check_out_time')
-                  ->whereDate('check_in_time', $today);
-        }])->whereHas('attendances', function ($query) use ($today) {
-            $query->whereNotNull('check_in_time')
-                  ->whereNotNull('check_out_time')
-                  ->whereDate('check_in_time', $today);
-        })->get();
+        // Call the methods for signed-in and signed-out staff
+        $signedInStaff = $this->signedInStaff()->getData()['signedInStaff'];
+        $signedOutStaff = $this->signedOutStaff()->getData()['signedOutStaff'];
 
         return view('admin.signed-in-out', compact('signedInStaff', 'signedOutStaff'));
     }
+
+    public function admin() {
+        $sign_ins = $this->signedInStaff()->getData()['signedInStaff'];
+        $sign_outs = $this->signedOutStaff()->getData()['signedOutStaff'];
+        $salary = User::pluck('salary');
+
+        return view('admin.dashboard', ['salary' => $salary], compact('sign_ins', 'sign_outs'));
+      }
 }
