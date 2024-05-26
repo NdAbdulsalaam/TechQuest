@@ -52,13 +52,13 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>User Information</span>
+                    <span>Staff Information</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Actions</h6>
-                        <a class="collapse-item" href="{{ route('admin.users') }}">All Users</a>
-                        <a class="collapse-item" href="{{ route('admin.add-user') }}">Add User</a>
+                        <a class="collapse-item" href="{{ route('admin.users') }}">All Staffs</a>
+                        <a class="collapse-item" href="{{ route('admin.add-user') }}">Add Staff</a>
                     </div>
                 </div>
             </li>
@@ -306,7 +306,7 @@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
-                        <!-- Nav Item - User Information -->
+                        <!-- Nav Item - Staff Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -314,7 +314,7 @@
                                 <img class="img-profile rounded-circle" src="{{ asset('dashboard/img/undraw_profile.svg') }}">
                             </a>
 
-                            <!-- Dropdown - User Information -->
+                            <!-- Dropdown - Staff Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">

@@ -22,23 +22,36 @@ class UserProfileContoller extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'fname' => ['required', 'string', 'max:255'],
-            'lname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]);
+      $request->validate([
+        'fname' => ['required', 'string', 'max:255'],
+        'lname' => ['required', 'string', 'max:255'],
+        'username' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255'],
+        'phone' => ['nullable', 'string', 'max:255'],
+        'position' => ['nullable', 'string', 'max:255'],
+        'office' => ['nullable', 'string', 'max:255'],
+        'age' => ['nullable', 'string', 'max:255'],
+        'salary' => ['nullable', 'numeric'],
+        'role' => ['required', 'string', 'max:255'],
+    ]);
     
-        $add = new User();
-        $add->name = $request->input('fname') . ' ' . $request->input('lname');
-        $add->username = $request->input('username');
-        $add->role = $request->input('role');
-        $add->email = strtolower($request->input('email'));
-        $add->password = Hash::make($request->input('lname'));
-        $add->save();
+        $addUser = new User();
+
+        $addUser->fname = $request->input('fname');
+        $addUser->lname = $request->input('lname');
+        $addUser->username = $request->input('username');
+        $addUser->email = $request->input('email');
+        $addUser->phone = $request->input('phone');
+        $addUser->position = $request->input('position');
+        $addUser->office = $request->input('office');
+        $addUser->age = $request->input('age');
+        $addUser->salary = $request->input('salary');
+        $addUser->role = $request->input('role');
+        $addUser->password = Hash::make($request->input('lname'));
+
+        $addUser->save();
     
-        return redirect()->back()->with('success', 'User added successfully! Default password is Your Last Name.');
+        return redirect()->back()->with('success', 'Staff added successfully! Default password is the last name.');
     }
 
       public function edit($id){
@@ -49,24 +62,36 @@ class UserProfileContoller extends Controller
       public function update($id, Request $request){
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:255'],
+            'position' => ['nullable', 'string', 'max:255'],
+            'office' => ['nullable', 'string', 'max:255'],
+            'age' => ['nullable', 'string', 'max:255'],
+            'salary' => ['nullable', 'numeric'],
             'role' => ['required', 'string', 'max:255'],
-            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        $update = User::findOrFail($id);
-
-        $update->name = $request->input('name');
-        $update->username = $request->input('username');
-        $update->role = $request->input('role');
-        // $update->password = $request->input('password');
-        // $update->email = $request->input('email');
-
-        $update->update($request->all());
-
-        return redirect()->back()->with('success', 'User profile updated successfully!');
-      }
+    
+        $updateUser = User::findOrFail($id);
+    
+        $updateUser->fname = $request->input('fname');
+        $updateUser->lname = $request->input('lname');
+        $updateUser->username = $request->input('username');
+        $updateUser->email = $request->input('email');
+        $updateUser->phone = $request->input('phone');
+        $updateUser->position = $request->input('position');
+        $updateUser->office = $request->input('office');
+        $updateUser->age = $request->input('age');
+        $updateUser->salary = $request->input('salary');
+        $updateUser->role = $request->input('role');
+    
+        $updateUser->save();
+    
+        return redirect()->back()->with('success', 'Staff profile updated successfully!');
+    }
+    
 
       public function destroy($id)
     {
