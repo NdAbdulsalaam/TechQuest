@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use App\Models\Attendance;
-use App\Models\Staff;
+use App\Models\User;
 use Carbon\Carbon;
 
 class AttendanceTableSeeder extends Seeder
@@ -41,11 +41,11 @@ class AttendanceTableSeeder extends Seeder
 
     public function seedAttendance()
     {
-        $staff = Staff::all();
+        $users = User::all();
 
-        foreach ($staff as $member) {
+        foreach ($users as $user) {
             Attendance::create([
-                'staff_id' => $member->id,
+                'user_id' => $user->id,
                 'date' => Carbon::now()->format('Y-m-d'),
                 'check_in_time' => Carbon::now()->subHours(2)->format('H:i:s'),
                 'check_out_time' => Carbon::now()->format('H:i:s'),
