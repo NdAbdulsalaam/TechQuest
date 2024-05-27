@@ -50,56 +50,26 @@
                                 <label for="username">{{ __('Username') }}</label>
                                 <input type="text" name="username" id="username" value="{{ $user->username }}" class="form-control" placeholder="Username">
                             </div>
+                        </div>
 
+                        <div class="col-lg-6">
                             <!-- Email Address -->
                             <div class="form-group">
                                 <label for="email">{{ __('Email Address') }}</label>
                                 <input type="email" name="email" value="{{ $user->email }}" id="email" class="form-control" placeholder="Email Address">
                             </div>
-
-                            <!-- Role Select -->
-                            <div class="form-group">
-                                <label for="role">{{ __('Role') }}</label>
-                                <select name="role" id="role" class="form-control">
-                                    <option value="" disabled selected>Select Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">Staff</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <!-- Phone -->
-                            <div class="form-group">
-                                <label for="phone">{{ __('Phone') }}</label>
-                                <input type="text" name="phone" id="phone" value="{{ $user->phone }}" class="form-control" placeholder="Phone">
-                            </div>
-
-                            <!-- Position -->
-                            <div class="form-group">
-                                <label for="position">{{ __('Position') }}</label>
-                                <input type="text" name="position" id="position" value="{{ $user->position }}" class="form-control" placeholder="Position">
-                            </div>
-
-                            <!-- Office -->
-                            <div class="form-group">
-                                <label for="office">{{ __('Office') }}</label>
-                                <input type="text" name="office" id="office" value="{{ $user->office }}" class="form-control" placeholder="Office">
-                            </div>
-
                             <!-- Age -->
                             <div class="form-group">
                                 <label for="age">{{ __('Age') }}</label>
                                 <input type="text" name="age" id="age" value="{{ $user->age }}" class="form-control" placeholder="Age">
                             </div>
 
-                            <!-- Salary -->
+                            <!-- Password -->
                             <div class="form-group">
-                                <label for="salary">{{ __('Salary') }}</label>
-                                <input type="text" name="salary" id="salary" value="{{ $user->salary }}" class="form-control" placeholder="Salary">
+                                <label for="password">{{ __('Password') }}</label>
+                                <input type="text" name="password" id="password" disabled value="{{ $user->password }}" class="form-control" placeholder="Password">
                             </div>
                         </div>
-
                         <div class="col-lg-12 text-center">
                             <button type="submit" class="btn btn-danger">{{ __('Update Staff Information') }}</button>
                         </div>

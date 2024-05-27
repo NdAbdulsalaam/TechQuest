@@ -21,13 +21,10 @@ class ProfileController extends Controller
         return view('user.view-profile', compact('user'));
       }
 
-
-    public function edit(Request $request): View
-    {
-        return view('user.edit-profile', [
-            'user' => $request->user(),
-        ]);
-    }
+    public function edit($id){
+        $user = User::find($id);
+        return view('user.edit-profile', compact('user'));
+      }
 
     /**
      * Update the user's profile information.
@@ -41,11 +38,7 @@ class ProfileController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:255'],
-            'position' => ['nullable', 'string', 'max:255'],
-            'office' => ['nullable', 'string', 'max:255'],
             'age' => ['nullable', 'string', 'max:255'],
-            'salary' => ['nullable', 'numeric'],
-            'role' => ['required', 'string', 'max:255'],
         ]);
     
         $updateUser = User::findOrFail($id);
@@ -55,11 +48,7 @@ class ProfileController extends Controller
         $updateUser->username = $request->input('username');
         $updateUser->email = $request->input('email');
         $updateUser->phone = $request->input('phone');
-        $updateUser->position = $request->input('position');
-        $updateUser->office = $request->input('office');
         $updateUser->age = $request->input('age');
-        $updateUser->salary = $request->input('salary');
-        $updateUser->role = $request->input('role');
     
         $updateUser->save();
     
