@@ -110,6 +110,12 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Send Email</span></a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('verification.notice') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Verify Email</span></a>
+            </li>
 
 
             <!-- Divider -->
