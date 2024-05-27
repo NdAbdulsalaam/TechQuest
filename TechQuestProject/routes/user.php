@@ -8,15 +8,18 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'verified', RoleMiddleware::class . ':user'])->prefix('user')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])
+    Route::get('dashboard/{id}', [DashboardController::class, 'index'])
     ->name('user.dashboard');
 
-    Route::get('profile', [ProfileController::class, 'edit'])
-               ->name('profile.edit');
+    Route::get('{id}', [ProfileController::class, 'show'])
+    ->name('user.view-profile');
 
-    Route::patch('profile', [ProfileController::class, 'update'])
-                 ->name('profile.update');
+    Route::get('profile/{id}', [ProfileController::class, 'edit'])
+               ->name('user.edit-profile');
 
-    Route::delete('profile', [ProfileController::class, 'destroy'])
-                  ->name('profile.destroy');
+    Route::patch('profile/{id}', [ProfileController::class, 'update'])
+                 ->name('user.update-profile');
+
+    Route::delete('profile/{id}', [ProfileController::class, 'destroy'])
+                  ->name('user.delete-profile');
 });

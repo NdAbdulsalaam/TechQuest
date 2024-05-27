@@ -1,5 +1,5 @@
-@extends('/layouts.admin-master')
-@section('title', 'Admin Dashboard')
+@extends('/layouts.user-master')
+@section('title', 'User Dashboard')
 
 
 @section('content')
@@ -12,7 +12,12 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Admin Dashboard</h1>
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
@@ -307,7 +312,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                        src="{{ asset('dashboard/img/undraw_posting_photo.svg') }}"  alt="...">
+                            src="{{ asset('dashboard/img/undraw_posting_photo.svg') }}" alt="...">
                     </div>
                     <p>Add some quality, svg illustrations to your project courtesy of <a
                             target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a

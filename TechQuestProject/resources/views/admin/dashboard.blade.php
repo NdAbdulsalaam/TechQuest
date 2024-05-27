@@ -131,7 +131,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -195,7 +195,11 @@
                                     <td>{{ $sign_in->fname ." " .$sign_in->lname }}</td>
                                     <td>{{ $sign_in->role }}</td>
                                     <td>{{ $sign_in->phone }}</td>
-                                    <td>{{ $sign_in->check_out_time }}</td>
+                                    <td>
+                                        @foreach($sign_in->attendances as $attendance)
+                                            {{ $attendance->check_in_time }}<br>
+                                        @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -223,7 +227,11 @@
                                     <td>{{ $sign_out->fname ." " .$sign_out->lname }}</td>
                                     <td>{{ $sign_out->role }}</td>
                                     <td>{{ $sign_out->phone }}</td>
-                                    <td>{{ $sign_out->check_out_time }}</td>
+                                    <td>
+                                        @foreach($sign_out->attendances as $attendance)
+                                            {{ $attendance->check_out_time }}<br>
+                                        @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -421,7 +429,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                            src="img/undraw_posting_photo.svg" alt="...">
+                            src="{{ asset('dashboard/img/undraw_posting_photo.svg') }}" alt="...">
                     </div>
                     <p>Add some quality, svg illustrations to your project courtesy of <a
                             target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a

@@ -30,7 +30,7 @@ Route::middleware(['auth', 'verified', RoleMiddleware::class . ':admin'])->prefi
     Route::put('user/update/{id}', [UserProfileContoller::class, 'update'])
                 ->name('admin.update-user');
 
-    Route::delete('userdelete/{id}', [UserProfileContoller::class, 'destroy'])
+    Route::delete('user/delete/{id}', [UserProfileContoller::class, 'destroy'])
                 ->name('admin.delete-user');
 
     Route::get('signed-in-out', [DashboardController::class, 'signedInOutStaff'])
