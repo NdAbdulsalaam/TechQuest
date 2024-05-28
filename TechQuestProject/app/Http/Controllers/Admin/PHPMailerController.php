@@ -43,7 +43,7 @@ class PHPMailerController extends Controller
             }
               
             else {
-                return back()->with("success", "Email has been sent.");
+                return back()->with("success", "Email sent successfully.");
             }
    
         } catch (Exception $e) {
