@@ -121,10 +121,30 @@ class DashboardController extends Controller
     }
 
     public function admin() {
-        $sign_ins = $this->signedInStaff()->getData()['signedInStaff'];
-        $sign_outs = $this->signedOutStaff()->getData()['signedOutStaff'];
-        $salary = User::pluck('salary');
+    // Get the count of users grouped by role
+    $userCounts = User::select('role', \DB::raw('count(*) as total'))
+        ->groupBy('role')
+        ->get()
+        ->pluck('total', 'role')
+        ->toArray();
 
-        return view('admin.dashboard', ['salary' => $salary], compact('sign_ins', 'sign_outs'));
+    // Individual counts
+    $admin_staffs = $userCounts['admin'] ?? 0;
+    $user_staffs = $userCounts['user'] ?? 0;
+
+    // Example data points
+    $dataPoints = [
+        ["label" => "Staff users", "y" => $user_staffs],
+        ["label" => "Admin users", "y" => $admin_staffs]
+    ];
+
+    return view('admin.dashboard', [
+        'salary' => User::pluck('salary'),
+        'sign_ins' => $this->signedInStaff()->getData()['signedInStaff'],
+        'sign_outs' => $this->signedOutStaff()->getData()['signedOutStaff'],
+        'dataPoints' => $dataPoints
+    ]);
+
+        // return view('admin.dashboard', ['salary' => $salary], compact('sign_ins', 'sign_outs', 'dataPoints'));
       }
 }

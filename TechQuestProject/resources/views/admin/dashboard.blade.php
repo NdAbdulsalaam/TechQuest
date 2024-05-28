@@ -1,7 +1,7 @@
 @extends('layouts.admin-master')
 @section('title', 'Admin Dashboard')
 
-@section('php')
+{{-- @section('php')
     @php
         use Illuminate\Support\Facades\DB;
 
@@ -23,7 +23,7 @@
         );
 
     @endphp
-@endsection
+@endsection --}}
 
 @section('content')
 <div id="content">
@@ -242,6 +242,7 @@
         </div>
 
         <!-- Pie Chart -->
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script>
             const myDate = new Date();
             let currentYear = myDate.getFullYear();
@@ -262,9 +263,9 @@
                 }],
                 data: [{
                     type: "pie",
-                    yValueFormatString: "#,##0.00\"%\"",
+                    yValueFormatString: "#,##0",
                     indexLabel: "{label} ({y})",
-                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: @json($dataPoints)
                 }]
             });
             chart.render();
@@ -283,12 +284,14 @@
 
 
                 <div class="card-body">
-                    <div id="chartContainer" style="height: 370px; width: 100%;">test</div>
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
                 </div>
             </div>
         </div>
     </div>
+
+    
 
 
     <div class="row">
