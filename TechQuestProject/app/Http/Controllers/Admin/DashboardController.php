@@ -32,45 +32,6 @@ class DashboardController extends Controller
           return view('staff.count_signed_in_out', compact('staff'));
       }
 
-
-    //   public function signedInStaff()
-    // {
-    //      // Get current date
-    //      $today = Carbon::today();
-    //     // Fetch signed-in staff (checked in but not checked out)
-    //     $signedInStaff = User::with(['attendances' => function ($query) use ($today) {
-    //         $query->whereNotNull('check_in_time')
-    //               ->whereNull('check_out_time')
-    //               ->whereDate('check_in_time', $today);
-    //     }])->whereHas('attendances', function ($query) use ($today) {
-    //         $query->whereNotNull('check_in_time')
-    //               ->whereNull('check_out_time')
-    //               ->whereDate('check_in_time', $today);
-    //     })->get();
-
-    //     return view('admin.signed-in', compact('signedInStaff'));
-    // }
-
-    // public function signedOutStaff()
-    // {
-    //     // Get current date
-    //     $today = Carbon::today();
-
-    //     // Fetch signed-out staff for the current day (checked in and checked out today)
-    //     $signedOutStaff = User::with(['attendances' => function ($query) use ($today) {
-    //         $query->whereNotNull('check_in_time')
-    //               ->whereNotNull('check_out_time')
-    //               ->whereDate('check_in_time', $today);
-    //     }])->whereHas('attendances', function ($query) use ($today) {
-    //         $query->whereNotNull('check_in_time')
-    //               ->whereNotNull('check_out_time')
-    //               ->whereDate('check_in_time', $today)
-    //               ->latest();
-    //     })->get();
-
-    //     return view('admin.signed-out', compact('signedOutStaff'));
-    // }
-
     public function signedInStaff()
     {
         // Get current date

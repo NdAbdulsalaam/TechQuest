@@ -1,30 +1,6 @@
 @extends('layouts.admin-master')
 @section('title', 'Admin Dashboard')
 
-{{-- @section('php')
-    @php
-        use Illuminate\Support\Facades\DB;
-
-
-            $staffs = DB::table('users')->count();
-            $admin_staffs = DB::table('users')->where('role','admin')->count();
-            $user_staffs = DB::table('users')->where('role','user')->count();
-
-            // echo $staffs;
-
-
-        $dataPoints = array(
-            array("label"=>"All Staffs", "y"=>$staffs),
-            // array("label"=>"Admin Staffs", "y"=>$admin_staffs),
-            array("label"=>"Staffs As User", "y"=>$user_staffs),
-            // array("label"=>"Admin Staffs", "y"=>$admin_staffs),
-            array("label"=>"Admin Staffs", "y"=>$admin_staffs),
-            array("label"=>"Empty", "y"=>1.0)
-        );
-
-    @endphp
-@endsection --}}
-
 @section('content')
 <div id="content">
 
@@ -146,14 +122,6 @@
 
     <div class="row">
 
-        <!-- Area Chart -->
-        {{-- <script>
-            window.onload = function () {
-
-
-
-            }
-            </script> --}}
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
