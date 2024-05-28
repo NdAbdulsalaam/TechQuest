@@ -25,7 +25,7 @@ class AttendanceTableSeeder extends Seeder
              // Prompt for confirmation if the table is not empty
              if ($this->command->confirm('The attendance table is not empty. Do you wish to continue and overwrite the existing data?', false)) {
                  // Truncate the table before seeding
-                 DB::table('attendances')->truncate();
+                 DB::table('attendances')->delete();
                  $this->seedAttendance();
              } else {
                  $this->command->info('Seeding was cancelled.');
@@ -44,12 +44,20 @@ class AttendanceTableSeeder extends Seeder
         $users = User::all();
 
         foreach ($users as $user) {
-            Attendance::create([
-                'user_id' => $user->id,
-                'date' => Carbon::now()->format('Y-m-d'),
-                'check_in_time' => Carbon::now()->subHours(2)->format('H:i:s'),
-                'check_out_time' => Carbon::now()->format('H:i:s'),
-            ]);
+            if($user->role !== "admin") {
+                Attendance::create([
+                    'user_id' => $user->id,
+                    'date' => Carbon::now()->format('Y-m-d'),
+                    'check_in_time' => Carbon::now()->subHours(2)->format('H:i:s'),
+                    'check_out_time' => Carbon::now()->format('H:i:s'),
+                ]);
+            } else {
+                Attendance::create([
+                    'user_id' => $user->id,
+                    'date' => Carbon::now()->format('Y-m-d'),
+                    'check_in_time' => Carbon::now()->subHours(2)->format('H:i:s'),
+                ]);  
+            }
 
             // Add more sample data as needed
         }
