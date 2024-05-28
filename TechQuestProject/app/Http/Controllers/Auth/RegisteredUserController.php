@@ -52,5 +52,7 @@ class RegisteredUserController extends Controller
         $role = Auth::user()->role;
 
         return redirect(route($role. '.dashboard', absolute: false));
+
+        // return redirect(route('verification.notice'));
     }
 }

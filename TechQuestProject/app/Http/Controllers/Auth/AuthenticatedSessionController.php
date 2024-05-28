@@ -44,6 +44,36 @@ class AuthenticatedSessionController extends Controller
         }
       }
 
+    //   public function store(LoginRequest $request): RedirectResponse
+    //   {
+    //       $request->authenticate();
+      
+    //       $request->session()->regenerate();
+      
+    //       // Check if the user's email is verified
+    //       if (!Auth::user()->hasVerifiedEmail()) {
+    //           Auth::logout();
+      
+    //           // Redirect to the email verification notice
+    //           return redirect()->route('verification.notice');
+    //       }
+      
+    //       // Redirect based on user's role
+    //       return redirect($this->redirectTo());
+    //   }
+      
+    //   public function redirectTo() {
+    //       $role = Auth::user()->role; 
+    //       switch ($role) {
+    //           case 'admin':
+    //               return '/admin/dashboard';
+    //           case 'user':
+    //               return '/user/dashboard';
+    //           default:
+    //               return '/home'; 
+    //       }
+    //   }
+
     /**
      * Destroy an authenticated session.
      */

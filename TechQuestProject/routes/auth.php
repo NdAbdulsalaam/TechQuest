@@ -28,6 +28,17 @@ Route::middleware('guest')->group(function () {
     Route::post('sign-out', [AttendanceController::class, 'signOut'])
                 ->name('attendance.signOut');
 
+    // Route::get('verify-email', EmailVerificationPromptController::class)
+    //             ->name('verification.notice');
+
+    // Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+    //             ->middleware(['signed', 'throttle:6,1'])
+    //             ->name('verification.verify');
+
+    // Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    //             ->middleware('throttle:6,1')
+    //             ->name('verification.send');
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
